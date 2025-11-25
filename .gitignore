@@ -1,3 +1,5 @@
 .env
 v_project
-__pycache__
+__pycache__venv/
+__pycache__/
+*.pyc
