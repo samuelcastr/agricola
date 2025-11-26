@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
 # Create your views here.
-<<<<<<< HEAD
+
 from rest_framework import viewsets, status
 from rest_framework.decorators import action
 from rest_framework.response import Response
@@ -64,5 +64,4 @@ class ProduccionViewSet(viewsets.ModelViewSet):
                 'producciones_count': int(item['producciones_count'] or 0)
             })
         return Response(result, status=status.HTTP_200_OK)
-=======
->>>>>>> perdidas-samuel
+

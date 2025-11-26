@@ -77,13 +77,27 @@ TEMPLATES = [
 WSGI_APPLICATION = 'config.wsgi.application'
 
 # Base de datos (Render / Railway)
+import dj_database_url
+import os
+import ssl
+
+DATABASE_URL = os.getenv("DATABASE_URL")
+
 DATABASES = {
     "default": dj_database_url.parse(
-        os.getenv("DATABASE_URL"),
+        DATABASE_URL,
         conn_max_age=600,
         ssl_require=True
     )
 }
+
+# Railway usa certificados SSL self-signed → debo desactivar la verificación
+DATABASES["default"]["OPTIONS"] = {
+    "ssl": {
+        "cert_reqs": ssl.CERT_NONE
+    }
+}
+
 
 # Password validation
 

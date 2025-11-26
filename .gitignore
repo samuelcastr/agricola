@@ -1,5 +1,5 @@
 .env
-v_project
+v_agricola/
 __pycache__venv/
 __pycache__/
 *.pyc
