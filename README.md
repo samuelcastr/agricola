@@ -136,10 +136,3 @@ curl "http://127.0.0.1:8000/api/reportes/indicadores/?inicio=2024-01-01&fin=2024
 
 ---
 
-¿Deseas que genere alguno de estos archivos adicionales?
-- Colección Postman (postman_collection.json)  
-- requirements.txt completo  
-- Diagrama UML básico  
-- README en PDF  
-- Banner/logo del repositorio
-// ...existing code...
