@@ -17,6 +17,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework import permissions
+from django.http import HttpResponse
+
+def home(request):
+    return HttpResponse("API funcionando correctamente!")
+
 from rest_framework_simplejwt.views import (
     TokenObtainPairView,
     TokenRefreshView,
@@ -41,6 +46,7 @@ schema_view = get_schema_view(
 
 urlpatterns = [
     # Admin
+	path('', home), 
     path('admin/', admin.site.urls),
 
     # SWAGGER
