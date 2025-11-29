@@ -10,6 +10,7 @@ from .serializers import CultivoSerializer, VariedadSerializer, ProduccionSerial
 from .filters import CultivoFilter, VariedadFilter, ProduccionFilter
 from rest_framework import filters as drf_filters
 from django.db.models import Sum
+from rest_framework.permissions import IsAuthenticated
 
 class CultivoViewSet(viewsets.ModelViewSet):
     queryset = Cultivo.objects.all()
@@ -18,6 +19,7 @@ class CultivoViewSet(viewsets.ModelViewSet):
     filter_backends = (drf_filters.SearchFilter, drf_filters.OrderingFilter, )
     search_fields = ('nombre',)
     ordering_fields = ('nombre', 'id')
+    permission_classes = [IsAuthenticated]
 
 class VariedadViewSet(viewsets.ModelViewSet):
     queryset = Variedad.objects.select_related('cultivo').all()
@@ -26,6 +28,7 @@ class VariedadViewSet(viewsets.ModelViewSet):
     filter_backends = (drf_filters.SearchFilter, drf_filters.OrderingFilter, )
     search_fields = ('nombre',)
     ordering_fields = ('nombre', 'id')
+    permission_classes = [IsAuthenticated]
 
 class ProduccionViewSet(viewsets.ModelViewSet):
     queryset = Produccion.objects.select_related('variedad__cultivo').all()
@@ -34,7 +37,8 @@ class ProduccionViewSet(viewsets.ModelViewSet):
     filter_backends = (drf_filters.SearchFilter, drf_filters.OrderingFilter, )
     search_fields = ('ciclo',)
     ordering_fields = ('fecha_inicio', 'cantidad_planeada')
-
+    permission_classes = [IsAuthenticated]
+    
     @action(detail=False, methods=['get'])
     def resumen_por_cultivo(self, request):
         """
