@@ -3,7 +3,7 @@ from rest_framework.viewsets import ModelViewSet
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from django_filters.rest_framework import DjangoFilterBackend
-
+from rest_framework.permissions import IsAuthenticated
 from django.db.models import Avg
 
 from .models import Cultivo, Cosecha
@@ -18,12 +18,12 @@ class MiVista(APIView):
 class CultivoViewSet(ModelViewSet):
     queryset = Cultivo.objects.all()
     serializer_class = CultivoSerializer
-
+    permission_classes = [IsAuthenticated]
 
 class CosechaViewSet(ModelViewSet):
     queryset = Cosecha.objects.all()
     serializer_class = CosechaSerializer
-
+    permission_classes = [IsAuthenticated]  
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ["cultivo", "fecha_cosecha"]
 
