@@ -6,7 +6,7 @@ API backend desarrollada con Django y Django REST Framework para gestionar culti
 ---
 
 ## 🧑‍💻 Autor y licencia
-- Autores: Heidy Vivas, Laura Sofia Fonseca, Samuel Castro 
+- Autores: Heidy Vivas
 
 ---
 
